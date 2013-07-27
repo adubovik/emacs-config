@@ -1,6 +1,5 @@
 ;; interface
 
-(cd "/home/expr/haskell/")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,12 +30,10 @@
 (setq abbrev-mode t)
 (setq-default abbrev-mode t)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
 (load-theme 'solarized-dark t)
 
 ;; haskell-mode
 
-(load "~/.emacs.d/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'haskell-font-lock-symbols t)
@@ -93,9 +90,12 @@
 ;; Packages repo
 
 (require 'package)
+;; Add the original Emacs Lisp Package Archive
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/"))
+;; Add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
 
 ;; R
 
