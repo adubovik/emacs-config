@@ -30,8 +30,6 @@
 (setq abbrev-mode t)
 (setq-default abbrev-mode t)
 
-(load-theme 'solarized-dark t)
-
 ;; haskell-mode
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
@@ -90,12 +88,10 @@
 ;; Packages repo
 
 (require 'package)
-;; Add the original Emacs Lisp Package Archive
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/"))
-;; Add the user-contributed repository
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; R
 
@@ -132,3 +128,7 @@ auto-mode-alist (append (list '("\\.S$" . S-mode)
 
 (normal-erase-is-backspace-mode 1)
 (delete-selection-mode 1)
+
+;; Color theme
+
+(load-theme 'solarized-dark t)
